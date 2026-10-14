@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: triage
+      POSTGRES_PASSWORD: triage
+      POSTGRES_DB: triagepilot
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U triage -d triagepilot"]
+      interval: 3s
+      retries: 20
+
+  api:
+    build: .
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      DATABASE_URL: postgresql+psycopg://triage:triage@db:5432/triagepilot
+      SECRET_KEY: ${SECRET_KEY:-local-dev-secret-change-me-32-bytes-min}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    ports: ["8000:8000"]
+    volumes: [models:/app/models, ./data:/app/data]
+
+volumes:
+  pgdata:
+  models:

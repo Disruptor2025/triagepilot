@@ -1,0 +1,24 @@
+{
+  "majority_class": {
+    "accuracy": 0.3193717277486911,
+    "macro_f1": 0.08068783068783068
+  },
+  "log_module_rule": {
+    "accuracy": 0.7643979057591623,
+    "macro_f1": 0.739976648247325
+  },
+  "tfidf_logreg": {
+    "accuracy": 0.9109947643979057,
+    "macro_f1": 0.8998824669221089
+  },
+  "routing_policy": {
+    "review_threshold": 0.6,
+    "auto_routed_share": 0.8586387434554974,
+    "accuracy_on_auto_routed": 0.975609756097561,
+    "sent_to_human_review": 27
+  },
+  "sizes": {
+    "train": 575,
+    "test": 191
+  }
+}

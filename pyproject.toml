@@ -1,0 +1,17 @@
+[project]
+name = "triagepilot"
+version = "1.0.0"
+description = "AI-assisted triage for autonomous-vehicle test failures"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]  # FastAPI's Depends() in defaults is idiomatic
