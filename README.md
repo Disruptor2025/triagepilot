@@ -111,11 +111,6 @@ The failure comes back routed to `planning` (97% confidence) with a triage note 
 | GET | `/analytics/triage-accuracy` | Model precision per subsystem against human labels |
 | POST | `/admin/retrain` | Retrain on all labeled failures (admin only) |
 
-## What I would build next
-
-- Swap TF-IDF retrieval for embeddings in pgvector and compare recall@5.
-- Alembic migrations, and a Jira connector that files the routed failure as a ticket.
-- An evaluation set of real, anonymized triage decisions to replace the synthetic data.
 
 ## Project layout
 
